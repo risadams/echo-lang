@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "echo-lang", "src\echo-lang.csproj", "{F8D6498E-A5A7-4281-B6F0-E273F22AADD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echo-Lang-Tests", "test\Echo-Lang-Tests\Echo-Lang-Tests.csproj", "{8A51E426-CF98-405A-A2C8-EA321A11726E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F8D6498E-A5A7-4281-B6F0-E273F22AADD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D6498E-A5A7-4281-B6F0-E273F22AADD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D6498E-A5A7-4281-B6F0-E273F22AADD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A51E426-CF98-405A-A2C8-EA321A11726E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A51E426-CF98-405A-A2C8-EA321A11726E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A51E426-CF98-405A-A2C8-EA321A11726E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A51E426-CF98-405A-A2C8-EA321A11726E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

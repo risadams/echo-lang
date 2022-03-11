@@ -10,4 +10,12 @@
     <AnalysisLevel>latest-all</AnalysisLevel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="echo-lang.csproj.DotSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Lexer\" />
+  </ItemGroup>
+
 </Project>
