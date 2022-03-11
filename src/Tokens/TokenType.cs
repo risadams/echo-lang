@@ -9,10 +9,11 @@ namespace Echo
   {
     // control
     INVALID = 0,
+    EOF,
 
     // literals
     Identifier,
-    Int,
+    Number,
 
     // operators
     Assign,

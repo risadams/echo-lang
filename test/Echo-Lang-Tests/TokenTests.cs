@@ -15,6 +15,14 @@ namespace Echo_Lang_Tests
     [InlineData(")", TokenType.RParen)]
     [InlineData("{", TokenType.LBrace)]
     [InlineData("}", TokenType.RBrace)]
+    [InlineData("let", TokenType.Let)]
+    [InlineData("5", TokenType.Number)]
+    [InlineData("ten", TokenType.Identifier)]
+    [InlineData("add", TokenType.Identifier)]
+    [InlineData("fn", TokenType.Function)]
+    [InlineData("function", TokenType.Function)]
+    [InlineData("x", TokenType.Identifier)]
+    [InlineData("", TokenType.EOF)]
     public void TestNextToken(string literal, TokenType type)
     {
       var l   = new Lexer(literal);
