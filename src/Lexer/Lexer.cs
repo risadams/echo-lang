@@ -10,6 +10,7 @@ namespace Echo
     };
 
     private readonly string _input;
+    private bool _break;
 
     private string _current = "";
     private int _position;
@@ -30,7 +31,10 @@ namespace Echo
     /// </summary>
     public void ReadChar()
     {
-      _current = _readPosition >= _input.Length ? "" : _input[_readPosition].ToString();
+      if (_readPosition >= _input.Length)
+        _break = true;
+      else
+        _current = _input[_readPosition].ToString();
 
       _position     =  _readPosition;
       _readPosition += 1;
@@ -43,6 +47,8 @@ namespace Echo
     public Token NextToken()
     {
       Token token;
+
+      SkipWhitespace();
 
       switch (_current)
       {
@@ -62,21 +68,27 @@ namespace Echo
           token = new Token(TokenType.Semicolon, _current);
           break;
         case "(":
-          token = new Token(TokenType.LParen, _current);
+          token = new Token(TokenType.LeftParen, _current);
           break;
         case ")":
-          token = new Token(TokenType.RParen, _current);
+          token = new Token(TokenType.RightParen, _current);
           break;
         case "}":
-          token = new Token(TokenType.RBrace, _current);
+          token = new Token(TokenType.RightBrace, _current);
           break;
         case "{":
-          token = new Token(TokenType.LBrace, _current);
+          token = new Token(TokenType.LeftBrace, _current);
           break;
         case "":
-          token = new Token(TokenType.EOF, _current);
+          token = new Token(TokenType.EndOfFile, _current);
           break;
         default:
+          if (_break)
+          {
+            token = new Token(TokenType.EndOfFile, _current);
+            break;
+          }
+
           if (IsValidIdentifierChar(_current))
           {
             var literal = ReadIdentifier();
@@ -90,7 +102,7 @@ namespace Echo
           }
           else
           {
-            token = new Token(TokenType.INVALID, _current);
+            token = new Token(TokenType.Invalid, _current);
           }
 
           break;
@@ -98,6 +110,14 @@ namespace Echo
 
       ReadChar();
       return token;
+    }
+
+    /// <summary>
+    ///   Skips whitespace between tokens.
+    /// </summary>
+    private void SkipWhitespace()
+    {
+      while (!_break && IsWhitespace(_current)) ReadChar();
     }
 
     /// <summary>
@@ -133,7 +153,7 @@ namespace Echo
       //look ahead to next non-valid identifier
       do
         ReadChar();
-      while (IsValidIdentifierChar(_current));
+      while (!_break && IsValidIdentifierChar(_current));
 
       // return the string range between the start and current read position
       return _input[starPosition.._position];
@@ -150,7 +170,7 @@ namespace Echo
       //look ahead to next non-valid identifier
       do
         ReadChar();
-      while (IsDigit(_current));
+      while (!_break && IsDigit(_current));
 
       // return the string range between the start and current read position
       return _input[starPosition.._position];

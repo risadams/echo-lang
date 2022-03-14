@@ -1,5 +1,8 @@
+using System.Diagnostics;
+
 namespace Echo
 {
+  [DebuggerDisplay("{Type,nq} => {Literal}")]
   public readonly struct Token : IEquatable<Token>
   {
     public Token(TokenType type, string literal)

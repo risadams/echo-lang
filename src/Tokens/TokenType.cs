@@ -8,8 +8,8 @@ namespace Echo
   public enum TokenType
   {
     // control
-    INVALID = 0,
-    EOF,
+    Invalid = 0,
+    EndOfFile,
 
     // literals
     Identifier,
@@ -24,10 +24,10 @@ namespace Echo
     Comma,
     Semicolon,
 
-    LParen,
-    RParen,
-    LBrace,
-    RBrace,
+    LeftParen,
+    RightParen,
+    LeftBrace,
+    RightBrace,
 
     // keywords
     Function,
